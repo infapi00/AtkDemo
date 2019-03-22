@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.base.920239605">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.base.920239605" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.base.920239605" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.base.920239605.2073535946" name="/" resourcePath="">
+						<toolChain id="org.eclipse.linuxtools.cdt.autotools.core.toolChain.1584986787" name="GNU Autotools Toolchain" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolChain">
+							<targetPlatform id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform.1488221830" isAbstract="false" name="GNU Autotools Target Platform" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.targetPlatform"/>
+							<builder id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder.1284158280" keepEnvironmentInBuildfile="false" name="Autotools Makefile Generator" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.builder"/>
+							<tool id="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure.1770017653" name="configure" superClass="org.eclipse.linuxtools.cdt.autotools.core.gnu.toolchain.tool.configure">
+								<option id="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name.518855760" name="Name" superClass="org.eclipse.linuxtools.cdt.autotools.core.option.configure.name" value="cdt.managedbuild.toolchain.gnu.base.920239605" valueType="string"/>
+							</tool>
+							<tool id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.autogen.769817123" name="autogen.sh" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.autogen"/>
+							<tool id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.1053111743" name="GCC C Compiler" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1068699003" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="/usr/include/at-spi2-atk/2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/at-spi-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/dbus-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib64/dbus-1.0/include"/>
+									<listOptionValue builtIn="false" value="/usr/include/gtk-3.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/pango-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/fribidi"/>
+									<listOptionValue builtIn="false" value="/usr/include/cairo"/>
+									<listOptionValue builtIn="false" value="/usr/include/pixman-1"/>
+									<listOptionValue builtIn="false" value="/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="/usr/include/libpng16"/>
+									<listOptionValue builtIn="false" value="/usr/include/uuid"/>
+									<listOptionValue builtIn="false" value="/usr/include/harfbuzz"/>
+									<listOptionValue builtIn="false" value="/usr/include/gdk-pixbuf-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/libmount"/>
+									<listOptionValue builtIn="false" value="/usr/include/blkid"/>
+									<listOptionValue builtIn="false" value="/usr/include/gio-unix-2.0/"/>
+									<listOptionValue builtIn="false" value="/usr/include/libdrm"/>
+									<listOptionValue builtIn="false" value="/usr/include/atk-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/glib-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib64/glib-2.0/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.918452844" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gpp.1984902568" name="GCC C++ Compiler" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gpp"/>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="cdt.managedbuild.toolchain.gnu.base.920239605.150240214" name="AtkDemo.c" rcbsApplicability="disable" resourcePath="AtkDemo.c" toolsToInvoke="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.1053111743.1056360790">
+						<tool id="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.1053111743.1056360790" name="GCC C Compiler" superClass="org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.1053111743"/>
+					</fileInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="org.eclipse.cdt.managedbuilder.pkgconfig.extSettings" factoryId="org.eclipse.cdt.core.extension.container.factory">
+					<externalSetting contentTypes="org.eclipse.cdt.managedbuilder.core.compiledObjectFile">
+						<entry flags="UNDEFINED" kind="libraryFile" name="atk-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gobject-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="glib-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="atk-bridge-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="atspi" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="dbus-1" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+					<externalSetting contentTypes="org.eclipse.cdt.core.cSource:org.eclipse.cdt.core.cxxSource">
+						<entry flags="NONE" kind="includePath" name="/usr/include/at-spi2-atk/2.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/at-spi-2.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/dbus-1.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/lib64/dbus-1.0/include"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/gtk-3.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/pango-1.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/fribidi"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/cairo"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/pixman-1"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/freetype2"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/libpng16"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/uuid"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/harfbuzz"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/gdk-pixbuf-2.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/libmount"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/blkid"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/gio-unix-2.0/"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/libdrm"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/atk-1.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/include/glib-2.0"/>
+						<entry flags="NONE" kind="includePath" name="/usr/lib64/glib-2.0/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/atk-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/glib-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/lib64/glib-2.0/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/at-spi2-atk/2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/at-spi-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/dbus-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/lib64/dbus-1.0/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gtk-3.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/pango-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/fribidi"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/cairo"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/pixman-1"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/freetype2"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/libpng16"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/uuid"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/harfbuzz"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gdk-pixbuf-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/libmount"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/blkid"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gio-unix-2.0/"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/libdrm"/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+			<storageModule ORBit-2.0="false" ORBit-CosNaming-2.0="false" ORBit-idl-2.0="false" ORBit-imodule-2.0="false" alsa="false" atk="true" atk-bridge-2.0="true" atspi-2="true" bash-completion="false" bigreqsproto="false" blkid="false" bonobo-activation-2.0="false" bzip2="false" cairo="false" cairo-fc="false" cairo-ft="false" cairo-gobject="false" cairo-pdf="false" cairo-png="false" cairo-ps="false" cairo-script="false" cairo-svg="false" cairo-tee="false" cairo-xcb="false" cairo-xcb-shm="false" cairo-xlib="false" cairo-xlib-xrender="false" cally-1.0="false" check="false" clutter-1.0="false" clutter-cogl-1.0="false" clutter-egl-1.0="false" clutter-gdk-1.0="false" clutter-glx-1.0="false" clutter-wayland-1.0="false" clutter-wayland-compositor-1.0="false" clutter-x11-1.0="false" cogl-1.0="false" cogl-2.0-experimental="false" cogl-gl-1.0="false" cogl-pango-1.0="false" cogl-pango-2.0-experimental="false" cogl-path-1.0="false" cogl-path-2.0-experimental="false" com_err="false" compositeproto="false" damageproto="false" dbus-1="false" dmxproto="false" dracut="false" dri="false" dri2proto="false" dri3proto="false" egl="false" enchant="false" epoxy="false" expat="false" fish="false" fixesproto="false" fontconfig="false" fontsproto="false" fontutil="false" form="false" formw="false" freetype2="false" fribidi="false" gail="false" gail-3.0="false" gbm="false" gdk="false" gdk-2.0="false" gdk-3.0="false" gdk-broadway-3.0="false" gdk-pixbuf-2.0="false" gdk-wayland-3.0="false" gdk-x11-2.0="false" gdk-x11-3.0="false" geoclue-2.0="false" gio-2.0="false" gio-unix-2.0="false" gl="false" glib="false" glib-2.0="false" glproto="false" gmodule="false" gmodule-2.0="false" gmodule-export-2.0="false" gmodule-no-export-2.0="false" gnome-keybindings="false" gnome-video-effects="false" gnutls="false" gnutls-dane="false" gobject-2.0="false" gobject-introspection-1.0="false" gobject-introspection-no-export-1.0="false" gpg-error="false" graphite2="false" grilo-plugins-0.3="false" gssrpc="false" gstreamer-0.10="false" gstreamer-1.0="false" gstreamer-allocators-1.0="false" gstreamer-app-1.0="false" gstreamer-audio-1.0="false" gstreamer-base-0.10="false" gstreamer-base-1.0="false" gstreamer-check-0.10="false" gstreamer-check-1.0="false" gstreamer-controller-0.10="false" gstreamer-controller-1.0="false" gstreamer-dataprotocol-0.10="false" gstreamer-fft-1.0="false" gstreamer-gl-1.0="false" gstreamer-net-0.10="false" gstreamer-net-1.0="false" gstreamer-pbutils-1.0="false" gstreamer-plugins-base-1.0="false" gstreamer-riff-1.0="false" gstreamer-rtp-1.0="false" gstreamer-rtsp-1.0="false" gstreamer-sdp-1.0="false" gstreamer-tag-1.0="false" gstreamer-video-1.0="false" gthread="false" gthread-2.0="false" gtk-doc="false" gtkplus="false" gtkplus-2.0="false" gtkplus-3.0="false" gtkplus-broadway-3.0="false" gtkplus-unix-print-2.0="false" gtkplus-unix-print-3.0="false" gtkplus-wayland-3.0="false" gtkplus-x11-2.0="false" gtkplus-x11-3.0="false" gtksourceview-3.0="false" harfbuzz="false" harfbuzz-icu="false" harfbuzz-subset="false" hesiod="false" hogweed="false" ice="false" icu-i18n="false" icu-io="false" icu-uc="false" inputproto="false" json-glib-1.0="false" kadm-client="false" kadm-server="false" kbproto="false" kdb="false" krb5="false" krb5-gssapi="false" libIDL-2.0="false" libacl="false" libattr="false" libbonobo-2.0="false" libcap="false" libcrypt="false" libcrypto="false" libcurl="false" libdrm="false" libdrm_amdgpu="false" libdrm_intel="false" libdrm_nouveau="false" libdrm_radeon="false" libelf="false" libexslt="false" libffi="false" libgda-5.0="false" libgda-bdb-5.0="false" libgda-jdbc-5.0="false" libgda-ldap-5.0="false" libgda-mdb-5.0="false" libgda-mysql-5.0="false" libgda-postgres-5.0="false" libgda-report-5.0="false" libgda-sqlcipher-5.0="false" libgda-sqlite-5.0="false" libgda-web-5.0="false" libgda-xslt-5.0="false" libgeoclue-2.0="false" libglvnd="false" libinput="false" libjpeg="false" libkms="false" liblzma="false" libnotify="false" libpci="false" libpcre="false" libpcre16="false" libpcre2-16="false" libpcre2-32="false" libpcre2-8="false" libpcre2-posix="false" libpcre32="false" libpcrecpp="false" libpcreposix="false" libpcsclite="false" libpeas-1.0="false" libpeas-gtk-1.0="false" libpng="false" libpng16="false" libquvi-scripts-0.9="false" librsvg-2.0="false" libsasl2="false" libsecret-1="false" libsecret-unstable="false" libselinux="false" libsepol="false" libsoup-2.4="false" libsoup-gnome-2.4="false" libssl="false" libsubunit="false" libsystemd="false" libtasn1="false" libtiff-4="false" libudev="false" libuser="false" libverto="false" libwebp="false" libwebpdecoder="false" libwebpdemux="false" libwebpmux="false" libxcrypt="false" libxml-2.0="false" libxslt="false" libzstd="false" lockdev="false" mallard-rng="false" menu="false" menuw="false" mit-krb5="false" mit-krb5-gssapi="false" moduleId="packages" mount="false" ncurses="false" ncursesplusplus="false" ncursesplusplusw="false" ncursesw="false" nettle="false" ogg="false" openssl="false" orc-0.4="false" p11-kit-1="false" panel="false" panelw="false" pango="false" pangocairo="false" pangoft2="false" pangoxft="false" pixman-1="false" popt="false" presentproto="false" pthread-stubs="false" python-3.7="false" python-3.7m="false" python3="false" randrproto="false" recordproto="false" renderproto="false" resourceproto="false" rpm="false" scrnsaverproto="false" shared-mime-info="false" slang="false" sm="false" sqlite3="false" systemd="false" tic="false" tinfo="false" udev="false" uuid="false" vapigen="false" vapigen-0.42="false" videoproto="false" vorbis="false" vorbisenc="false" vorbisfile="false" wayland-client="false" wayland-cursor="false" wayland-egl="false" wayland-egl-backend="false" wayland-protocols="false" wayland-scanner="false" wayland-server="false" x11="false" x11-xcb="false" xau="false" xcb="false" xcb-composite="false" xcb-damage="false" xcb-dpms="false" xcb-dri2="false" xcb-dri3="false" xcb-glx="false" xcb-present="false" xcb-randr="false" xcb-record="false" xcb-render="false" xcb-res="false" xcb-screensaver="false" xcb-shape="false" xcb-shm="false" xcb-sync="false" xcb-xf86dri="false" xcb-xfixes="false" xcb-xinerama="false" xcb-xinput="false" xcb-xkb="false" xcb-xselinux="false" xcb-xtest="false" xcb-xv="false" xcb-xvmc="false" xcmiscproto="false" xcomposite="false" xcursor="false" xdamage="false" xext="false" xextproto="false" xf86bigfontproto="false" xf86dgaproto="false" xf86driproto="false" xf86miscproto="false" xf86vidmodeproto="false" xfixes="false" xft="false" xi="false" xinerama="false" xineramaproto="false" xkbcommon="false" xproto="false" xproxymngproto="false" xrandr="false" xrender="false" xt="false" xtst="false" xxf86vm="false" zlib="false"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="AtkDemo.null.360583268" name="AtkDemo"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/AtkDemo"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.920239605;cdt.managedbuild.toolchain.gnu.base.920239605.2073535946;cdt.managedbuild.tool.gnu.c.compiler.base.1105779207;cdt.managedbuild.tool.gnu.c.compiler.input.973344119">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.920239605;cdt.managedbuild.toolchain.gnu.base.920239605.2073535946;org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.1053111743;cdt.managedbuild.tool.gnu.c.compiler.input.918452844">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+		</buildTargets>
+	</storageModule>
+</cproject>
