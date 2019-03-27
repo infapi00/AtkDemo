@@ -9,57 +9,47 @@
 #include <atk/atk.h>
 #include <atk-bridge.h>
 
-/*
-static const gchar *
-get_toolkit_name (void)
-{
-  return "My Root";
-}
-
-static const gchar *
-get_toolkit_version (void)
-{
-  return atk_get_toolkit_version();
-}
-
 static AtkObject *
 get_root (void)
 {
-  static AtkObject *root;
+	static AtkObject *root;
 
-  if (!root)
-    {
-      root = g_object_new (ATK_TYPE_GOBJECT_ACCESSIBLE, NULL);
-      atk_object_initialize (root, NULL);
-    }
-
-  return root;
-}
-*/
-
-static void
-set_root (void){
-	static GObject *groot=NULL;
-	static AtkObject *root=NULL;
-
-	if(!groot){
-		groot=g_object_new (ATK_TYPE_GOBJECT_ACCESSIBLE, NULL);
-		root =atk_gobject_accessible_for_object(groot);
+	if(!root)
+	{
+		root = g_object_new (ATK_TYPE_NO_OP_OBJECT, NULL);
 		atk_object_initialize (root, NULL);
 	}
+	return root;
+}
+
+const gchar *
+get_toolkit_name (void)
+{
+  return strdup ("My ATK-UTIL");
+}
+
+static void
+setup_atk_util (void)
+{
+  AtkUtilClass *klass;
+
+  klass = g_type_class_ref (ATK_TYPE_UTIL);
+  klass->get_root = get_root;
+  klass->get_toolkit_name = get_toolkit_name;
+  g_type_class_unref (klass);
 }
 
 
 int main(int argc, char **argv) {
 
-	set_root;
+	setup_atk_util();
 
-	int bridge = atk_bridge_adaptor_init (NULL, NULL);
+	int bridge = atk_bridge_adaptor_init (&argc, &argv);
 
 	if(bridge)
-		printf("Initialized\n");
+		printf ("Initialized\n");
 	else
-		printf("Not Initialized\n");
+		printf ("Not Initialized\n");
 	atk_bridge_adaptor_cleanup();
 	return 0;
 
