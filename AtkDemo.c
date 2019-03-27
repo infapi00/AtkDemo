@@ -9,17 +9,17 @@
 #include <atk/atk.h>
 #include <atk-bridge.h>
 
+#include "AtkRoot.h"
+
+static CAtkRoot * root = NULL;
+
 static AtkObject *
 get_root (void)
 {
-	static AtkObject *root;
-
-	if(!root)
-	{
-		root = g_object_new (ATK_TYPE_NO_OP_OBJECT, NULL);
-		atk_object_initialize (root, NULL);
+	if (!root){
+		root = g_object_new(C_ATK_ROOT,ATK_ROLE_APPLICATION);
 	}
-	return root;
+	return ATK_OBJECT(root);
 }
 
 const gchar *
