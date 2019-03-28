@@ -13,6 +13,7 @@ typedef struct
 
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
+
 enum {
   PROP_0,
   N_PROPS
@@ -30,11 +31,11 @@ static GParamSpec *properties [N_PROPS];
 CAtkRoot *
 c_atk_root_new (void)
 {
-  return g_object_new (C_ATK_ROOT, NULL);
+  return g_object_new (C_TYPE_ATK_ROOT, NULL);
 }
 
 static void
-atk_root_initialize(AtkObject *self)
+atk_root_initialize(AtkObject *self, gpointer null)
 {
 	atk_object_set_role(self, ATK_ROLE_APPLICATION);
 }

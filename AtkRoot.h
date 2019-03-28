@@ -8,9 +8,7 @@
 #ifndef _C_ATK_ROOT_H_
 #define _C_ATK_ROOT_H_
 
-
-#include <glib-object.h>
-#include <atk/atkobject.h>
+#include <atk/atk.h>
 
 G_BEGIN_DECLS
 
@@ -22,6 +20,7 @@ G_DECLARE_DERIVABLE_TYPE (CAtkRoot, c_atk_root, C, ATK_ROOT, AtkObject)
 struct _CAtkRootClass
 {
   AtkObjectClass parent_class;
+
 };
 
 CAtkRoot *c_atk_root_new (void);
