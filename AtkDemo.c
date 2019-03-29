@@ -17,7 +17,7 @@ static AtkObject *
 get_root (void)
 {
 	if (!root){
-		root = g_object_new(C_TYPE_ATK_ROOT,NULL);
+		root = g_object_new(C_TYPE_ATK_ROOT_ACCESSIBLE,NULL);
 	}
 	return ATK_OBJECT(root);
 }
@@ -50,7 +50,9 @@ int main(int argc, char **argv) {
 		printf ("Initialized\n");
 	else
 		printf ("Not Initialized\n");
+
 	atk_bridge_adaptor_cleanup();
+
 	return 0;
 
 }
