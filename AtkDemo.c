@@ -12,6 +12,7 @@
 #include "AtkRoot.h"
 
 static CAtkRoot * root = NULL;
+static GMainLoop *mainloop;
 
 static AtkObject *
 get_root (void)
@@ -50,6 +51,10 @@ int main(int argc, char **argv) {
 		printf ("Initialized\n");
 	else
 		printf ("Not Initialized\n");
+
+        mainloop = g_main_loop_new (NULL, FALSE);
+        g_main_loop_run (mainloop);
+
 	atk_bridge_adaptor_cleanup();
 	return 0;
 
