@@ -48,6 +48,12 @@ atk_root_finalize (GObject *object)
   G_OBJECT_CLASS (c_atk_root_parent_class)->finalize (object);
 }
 
+static const char*
+c_atk_root_get_name (AtkObject *obj)
+{
+   return "ATK DEMO FOR THE WIN!!";
+}
+
 static void
 c_atk_root_class_init (CAtkRootClass *klass)
 {
@@ -55,6 +61,7 @@ c_atk_root_class_init (CAtkRootClass *klass)
   AtkObjectClass *atk_class=ATK_OBJECT_CLASS(klass);
 
   atk_class->initialize = atk_root_initialize;
+  atk_class->get_name = c_atk_root_get_name;
   object_class->finalize = atk_root_finalize;
 }
 
