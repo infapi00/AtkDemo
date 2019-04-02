@@ -85,7 +85,7 @@ static void
 c_atk_root_class_init (CAtkRootClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  AtkObjectClass *atk_class=ATK_OBJECT_GET_CLASS(klass);
+  AtkObjectClass *atk_class=ATK_OBJECT_CLASS(klass);
 
   atk_class->initialize = atk_root_initialize;
   object_class->finalize = atk_root_finalize;
