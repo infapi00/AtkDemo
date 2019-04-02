@@ -15,13 +15,6 @@ struct _CAtkRootPrivate
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
 
-enum {
-  PROP_0,
-  N_PROPS
-};
-
-static GParamSpec *properties [N_PROPS];
-
 /**
  * atkroot_new:
  *
@@ -52,36 +45,6 @@ atk_root_finalize (GObject *object)
 }
 
 static void
-atk_root_get_property (GObject    *object,
-                       guint       prop_id,
-                       GValue     *value,
-                       GParamSpec *pspec)
-{
-  CAtkRoot *self = C_ATK_ROOT (object);
-
-  switch (prop_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-    }
-}
-
-static void
-atk_root_set_property (GObject      *object,
-                       guint         prop_id,
-                       const GValue *value,
-                       GParamSpec   *pspec)
-{
-  CAtkRoot *self = C_ATK_ROOT (object);
-
-  switch (prop_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-    }
-}
-
-static void
 c_atk_root_class_init (CAtkRootClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -89,8 +52,6 @@ c_atk_root_class_init (CAtkRootClass *klass)
 
   atk_class->initialize = atk_root_initialize;
   object_class->finalize = atk_root_finalize;
-  object_class->get_property = atk_root_get_property;
-  object_class->set_property = atk_root_set_property;
 }
 
 static void
