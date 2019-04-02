@@ -17,7 +17,7 @@ static AtkObject *
 get_root (void)
 {
 	if (!root){
-		root = g_object_new(C_TYPE_ATK_ROOT,NULL);
+           root = c_atk_root_new ();
 	}
 	return ATK_OBJECT(root);
 }
