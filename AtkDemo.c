@@ -44,9 +44,9 @@ int main(int argc, char **argv) {
 
 	setup_atk_util();
 
-	int bridge = atk_bridge_adaptor_init (&argc, &argv);
+	int init_outcome = atk_bridge_adaptor_init (&argc, &argv);
 
-	if(bridge)
+	if(init_outcome == 0)
 		printf ("Initialized\n");
 	else
 		printf ("Not Initialized\n");
