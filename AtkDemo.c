@@ -12,12 +12,13 @@
 #include "AtkRoot.h"
 
 static CAtkRoot * root = NULL;
+static GMainLoop *mainloop;
 
 static AtkObject *
 get_root (void)
 {
 	if (!root){
-		root = g_object_new(C_TYPE_ATK_ROOT_ACCESSIBLE,NULL);
+           root = c_atk_root_new ();
 	}
 	return ATK_OBJECT(root);
 }
@@ -44,12 +45,15 @@ int main(int argc, char **argv) {
 
 	setup_atk_util();
 
-	int bridge = atk_bridge_adaptor_init (&argc, &argv);
+	int init_outcome = atk_bridge_adaptor_init (&argc, &argv);
 
-	if(bridge)
+	if(init_outcome == 0)
 		printf ("Initialized\n");
 	else
 		printf ("Not Initialized\n");
+
+        mainloop = g_main_loop_new (NULL, FALSE);
+        g_main_loop_run (mainloop);
 
 	atk_bridge_adaptor_cleanup();
 

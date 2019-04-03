@@ -7,26 +7,30 @@
 
 #include "AtkRoot.h"
 
-struct _CAtkRootAccessiblePrivate
+struct _CAtkRootPrivate
 {
-  GList *obj_list;
+   /* g_type_add_instance_private requires private_size > 0 */
+   gint pad;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (CAtkRootAccessible, c_atk_root_accessible, ATK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
-enum {
-  PROP_0,
-  N_PROPS
-};
 
-static void
-c_atk_root_accessible_initialize (AtkObject *accessible,
-                                    gpointer   data)
+/**
+ * atkroot_new:
+ *
+ * Create a new #AtkRoot.
+ *
+ * Returns: (transfer full): a newly created #AtkRoot
+ */
+CAtkRoot *
+c_atk_root_new (void)
 {
-  ATK_OBJECT_CLASS (c_atk_root_accessible_parent_class)->initialize (accessible, data);
+   CAtkRoot *root = g_object_new (C_ATK_TYPE_ROOT, NULL);
 
-  accessible->role = ATK_ROLE_APPLICATION;
-  accessible->accessible_parent = NULL;
+   atk_object_initialize(ATK_OBJECT(root), NULL);
+
+   return root;
 }
 
 static void
@@ -77,8 +81,8 @@ c_atk_root_accessible_get_name (AtkObject *obj)
 static void
 c_atk_root_accessible_class_init (CAtkRootAccessibleClass *klass)
 {
-  AtkObjectClass *class = ATK_OBJECT_CLASS(klass);
-  GObjectClass *g_object_class = G_OBJECT_CLASS(klass);
+  /* CAtkRoot *self = (CAtkRoot *)object; */
+  /* CAtkRootPrivate *priv = c_atk_root_get_instance_private (self); */
 
   class->initialize = c_atk_root_accessible_initialize;
   class->get_n_children = c_atk_root_accessible_get_n_children;
@@ -89,37 +93,10 @@ c_atk_root_accessible_class_init (CAtkRootAccessibleClass *klass)
   g_object_class->finalize = c_atk_root_accessible_object_finalize;
 }
 
-static void
-remove_child (CAtkRootAccessible *toplevel,
-              AtkObject             *obj)
+static const char*
+c_atk_root_get_name (AtkObject *obj)
 {
-  AtkObject *atk_obj = ATK_OBJECT (toplevel);
-  GList *l;
-  guint obj_count = 0;
-  AtkObject *child;
-
-  if (toplevel->priv->obj_list)
-    {
-	  AtkObject *tmp_obj;
-
-      for (l = toplevel->priv->obj_list; l; l = l->next)
-        {
-    	  tmp_obj = ATK_OBJECT (l->data);
-
-          if (obj == tmp_obj)
-            {
-              /* Remove the window from the obj_list & emit the signal */
-              toplevel->priv->obj_list = g_list_delete_link (toplevel->priv->obj_list, l);
-              child = obj;
-              g_signal_emit_by_name (atk_obj, "children-changed::remove",
-                                     obj_count, child, NULL);
-              atk_object_set_parent (child, NULL);
-              break;
-            }
-
-          obj_count++;
-        }
-    }
+   return "ATK DEMO FOR THE WIN!!";
 }
 
 static gboolean
@@ -182,50 +159,14 @@ hide_event_watcher (GSignalInvocationHint *ihint,
 }
 
 static void
-c_atk_root_accessible_init (CAtkRootAccessible *toplevel)
+c_atk_root_class_init (CAtkRootClass *klass)
 {
-  AtkObject *obj;
-  GList *l;
-  guint signal_id;
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+  AtkObjectClass *atk_class=ATK_OBJECT_CLASS(klass);
 
-  toplevel->priv = c_atk_root_accessible_get_instance_private (toplevel);
-
-  l = toplevel->priv->obj_list = g_list_alloc();
-
-  while (l)
-    {
-      obj = ATK_OBJECT (l->data);
-      if (!obj ||
-          atk_object_get_parent (obj))
-        {
-          GList *temp_l  = l->next;
-
-          toplevel->priv->obj_list = g_list_delete_link (toplevel->priv->obj_list, l);
-          l = temp_l;
-        }
-      else
-        {
-          g_signal_connect_swapped (G_OBJECT (obj), "destroy",
-                                    G_CALLBACK (remove_child), toplevel);
-          l = l->next;
-        }
-    }
-
-  g_type_class_ref (ATK_TYPE_OBJECT);
-
-  signal_id  = g_signal_lookup ("show", ATK_TYPE_OBJECT);
-  g_signal_add_emission_hook (signal_id, 0,
-                              show_event_watcher, toplevel, (GDestroyNotify) NULL);
-
-  signal_id  = g_signal_lookup ("hide", ATK_TYPE_OBJECT);
-  g_signal_add_emission_hook (signal_id, 0,
-                              hide_event_watcher, toplevel, (GDestroyNotify) NULL);
-}
-
-GList *
-gtk_toplevel_accessible_get_children (CAtkRootAccessible *accessible)
-{
-  return accessible->priv->obj_list;
+  atk_class->initialize = atk_root_initialize;
+  atk_class->get_name = c_atk_root_get_name;
+  object_class->finalize = atk_root_finalize;
 }
 
 static void
