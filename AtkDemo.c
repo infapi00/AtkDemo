@@ -56,7 +56,6 @@ int main(int argc, char **argv) {
         g_main_loop_run (mainloop);
 
 	atk_bridge_adaptor_cleanup();
-
 	return 0;
 
 }
