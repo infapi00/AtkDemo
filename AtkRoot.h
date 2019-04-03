@@ -12,7 +12,7 @@
 
 G_BEGIN_DECLS
 
-#define C_ATK_TYPE_ROOT            (c_atk_root_get_type ())
+#define C_TYPE_ATK_ROOT            (c_atk_root_get_type ())
 
 /* Work around the fact that Atk does not define the auto pointer cleanup.
  * Add a check using ATK_CHECK_VERSION once fixed in Atk upstream. */

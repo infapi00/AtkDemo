@@ -26,7 +26,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 CAtkRoot *
 c_atk_root_new (void)
 {
-   CAtkRoot *root = g_object_new (C_ATK_TYPE_ROOT, NULL);
+   CAtkRoot *root = g_object_new (C_TYPE_ATK_ROOT, NULL);
 
    atk_object_initialize(ATK_OBJECT(root), NULL);
 
@@ -43,11 +43,6 @@ atk_root_initialize(AtkObject *self, gpointer null)
 static void
 atk_root_finalize (GObject *object)
 {
-#if 0
-  CAtkRoot *self = (CAtkRoot *)object;
-  CAtkRootPrivate *priv = c_atk_root_get_instance_private (self);
-#endif
-
   G_OBJECT_CLASS (c_atk_root_parent_class)->finalize (object);
 }
 
