@@ -23,7 +23,7 @@ G_DECLARE_DERIVABLE_TYPE(CAtkRoot, c_atk_root, C, ATK_ROOT, AtkObject)
 struct _CAtkRootClass
 {
   AtkObjectClass parent_class;
-
+  CAtkRootPrivate *private;
 };
 
 CAtkRoot *c_atk_root_new (void);

@@ -2,3 +2,6 @@ AtkDemo
 .cproject
 .project
 .settings/
+AtkRoot.o
+AtkFrame.o
+MyAtk.a
