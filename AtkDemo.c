@@ -19,9 +19,9 @@ static GMainLoop *mainloop;
 static AtkObject *
 get_root (void)
 {
-	if (!root){
-           root = c_atk_root_new ();
-	}
+	if (!root)
+		root = c_atk_root_new ();
+
 	return ATK_OBJECT(root);
 }
 
@@ -44,10 +44,11 @@ setup_atk_util (void)
 
 static void
 add_atk_frame(void){
-	if (!root && frame){
-			frame = c_atk_frame_new ();
-			atk_object_add_relationship(ATK_OBJECT(root), ATK_RELATION_CONTROLLER_FOR,ATK_OBJECT(frame));
-		}
+	if (!root && frame)
+	{
+		frame = c_atk_frame_new ();
+
+	}
 }
 
 

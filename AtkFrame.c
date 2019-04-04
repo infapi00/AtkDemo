@@ -34,10 +34,10 @@ c_atk_frame_new (void)
 }
 
 static void
-c_atk_frame_initialize(AtkObject *self, gpointer null)
+c_atk_frame_initialize (AtkObject *self, gpointer null)
 {
-	self->role=ATK_ROLE_FRAME;
-	self->accessible_parent=atk_get_root();
+	self->role = ATK_ROLE_FRAME;
+	self->accessible_parent = atk_get_root();
 }
 
 
