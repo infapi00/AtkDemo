@@ -13,8 +13,8 @@
 #include "AtkFrame.h"
 
 static CAtkRoot * root = NULL;
-static CAtkFrame * frame=NULL;
-static GMainLoop *mainloop;
+static CAtkFrame * frame = NULL;
+static GMainLoop * mainloop;
 
 static AtkObject *
 get_root (void)

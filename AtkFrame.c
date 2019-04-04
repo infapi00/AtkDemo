@@ -53,14 +53,21 @@ c_atk_frame_get_name (AtkObject *obj)
    return "ATK FRAME DEMO";
 }
 
+static AtkObject*
+c_atk_frame_get_parent()
+{
+	return atk_get_root();
+}
+
 static void
 c_atk_frame_class_init (CAtkFrameClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  AtkObjectClass *atk_class=ATK_OBJECT_CLASS(klass);
+  AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
 
   atk_class->initialize = c_atk_frame_initialize;
   atk_class->get_name = c_atk_frame_get_name;
+  atk_class->get_parent = c_atk_frame_get_parent;
   object_class->finalize = c_atk_frame_finalize;
 }
 
