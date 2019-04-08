@@ -52,8 +52,6 @@ c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
 	g_signal_emit_by_name (root, "children_changed::remove", index, obj, NULL);
 }
 
-
-
 /**
  * atkroot_new:
  *
@@ -75,7 +73,7 @@ static void
 c_atk_root_initialize (AtkObject *self, gpointer null)
 {
 	const GList *iter = NULL;
-	const GSList *obj_list = NULL;
+	const GList *obj_list = NULL;
 	AtkObject *child = NULL;
 	CAtkRoot * root= NULL;
 
@@ -183,4 +181,3 @@ c_atk_root_init (CAtkRoot *self)
 	priv->obj_added_id = 0;
 	priv->obj_added_id = 0;
 }
-
