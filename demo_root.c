@@ -22,6 +22,38 @@ typedef struct
 
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
+static void
+c_atk_add_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+{
+	CAtkRoot *root = C_ATK_ROOT(data);
+	gint index = -1;
+
+	atk_object_set_parent (obj, ATK_OBJECT (root));
+
+	priv->accessibleObjects = g_list_append (priv->accessibleObjects, obj);
+
+	index = g_list_index (priv->accessibleObjects, obj);
+	g_signal_emit_by_name (root, "children_changed::add", index, obj, NULL);
+
+}
+
+static void
+c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+{
+	CAtkRoot *root = C_ATK_ROOT(data);
+	gint index = -1;
+
+	atk_object_set_parent (obj, ATK_OBJECT (root));
+
+	priv->accessibleObjects = g_list_remove (priv->accessibleObjects, obj);
+
+	index = g_list_index (priv->accessibleObjects, obj);
+
+	g_signal_emit_by_name (root, "children_changed::remove", index, obj, NULL);
+}
+
+
+
 /**
  * atkroot_new:
  *
@@ -150,35 +182,5 @@ c_atk_root_init (CAtkRoot *self)
 	priv->accessibleObjects = NULL;
 	priv->obj_added_id = 0;
 	priv->obj_added_id = 0;
-}
-
-static void
-c_atk_add_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
-{
-	CAtkRoot *root = C_ATK_ROOT(data);
-	gint index = -1;
-
-	atk_object_set_parent (obj, ATK_OBJECT (root));
-
-	priv->accessibleObjects = g_list_append (priv->accessibleObjects, obj);
-
-	index = g_list_index (priv->accessibleObjects, obj);
-	g_signal_emit_by_name (root, "children_changed::add", index, obj, NULL);
-
-}
-
-static void
-c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
-{
-	CAtkRoot *root = C_ATK_ROOT(data);
-	gint index = -1;
-
-	atk_object_set_parent (obj, ATK_OBJECT (root));
-
-	priv->accessibleObjects = g_list_remove (priv->accessibleObjects, obj);
-
-	index = g_list_index (priv->accessibleObjects, obj);
-
-	g_signal_emit_by_name (root, "children_changed::remove", index, obj, NULL);
 }
 
