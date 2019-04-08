@@ -5,7 +5,8 @@
  *      Author: giuseppe
  */
 
-#include "AtkRoot.h"
+#include "demo_root.h"
+
 #include <gmodule.h>
 
 #define C_ATK_ROOT_GET_PRIVATE(o) (c_atk_root_get_istance_private (o))
@@ -41,9 +42,31 @@ c_atk_root_new (void)
 static void
 c_atk_root_initialize (AtkObject *self, gpointer null)
 {
+	const GList *iter = NULL;
+	const GSList *obj_list = NULL;
+	AtkObject *child = NULL;
+	CAtkRoot * root= NULL;
 
 	atk_object_set_role(self, ATK_ROLE_APPLICATION);
 	atk_object_set_parent(self, NULL);
+
+	root = C_ATK_ROOT(self);
+	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
+	obj_list = priv->accessibleObjects;
+
+	for (iter = obj_list; iter != NULL; iter = g_list_next (iter))
+	    {
+	      child = ATK_OBJECT(iter->data);
+
+	      atk_object_set_parent (child, ATK_OBJECT (root));
+
+	      priv->accessibleObjects = g_list_append (priv->accessibleObjects, child);
+
+	    }
+
+	  priv->obj_added_id = g_signal_connect (G_OBJECT (priv), "obj-added", G_CALLBACK (c_atk_add_obj), root);
+
+	  priv->obj_removed_id = g_signal_connect (G_OBJECT (priv), "obj-removed", G_CALLBACK (c_atk_remove_obj), root);
 
 }
 
@@ -127,5 +150,35 @@ c_atk_root_init (CAtkRoot *self)
 	priv->accessibleObjects = NULL;
 	priv->obj_added_id = 0;
 	priv->obj_added_id = 0;
+}
+
+static void
+c_atk_add_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+{
+	CAtkRoot *root = C_ATK_ROOT(data);
+	gint index = -1;
+
+	atk_object_set_parent (obj, ATK_OBJECT (root));
+
+	priv->accessibleObjects = g_list_append (priv->accessibleObjects, obj);
+
+	index = g_list_index (priv->accessibleObjects, obj);
+	g_signal_emit_by_name (root, "children_changed::add", index, obj, NULL);
+
+}
+
+static void
+c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+{
+	CAtkRoot *root = C_ATK_ROOT(data);
+	gint index = -1;
+
+	atk_object_set_parent (obj, ATK_OBJECT (root));
+
+	priv->accessibleObjects = g_list_remove (priv->accessibleObjects, obj);
+
+	index = g_list_index (priv->accessibleObjects, obj);
+
+	g_signal_emit_by_name (root, "children_changed::remove", index, obj, NULL);
 }
 

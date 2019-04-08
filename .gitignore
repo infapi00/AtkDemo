@@ -1,7 +1,7 @@
-AtkDemo
+demo
 .cproject
 .project
 .settings/
-AtkRoot.o
-AtkFrame.o
-MyAtk.a
+demo_root.o
+demo_frame.o
+demo.a

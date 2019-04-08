@@ -3,16 +3,16 @@ LIBS = `pkg-config --libs glib-2.0 atk atk-bridge-2.0`
 
 all: Demo	
 
-Demo: MyAtk.a
-	gcc $(CFLAGS) -o AtkDemo AtkDemo.c MyAtk.a $(LIBS) -Wall -g3 -O0 -ggdb3
+Demo: demo.a
+	gcc $(CFLAGS) -o demo demo.c demo.a $(LIBS) -Wall -g3 -O0 -ggdb3
 
-MyAtk.a: AtkRoot.o AtkFrame.o
-	ar rvs MyAtk.a AtkRoot.o AtkFrame.o
+demo.a: demo_root.o demo_frame.o
+	ar rvs demo.a AtkRoot.o AtkFrame.o
 
-AtkRoot.o: AtkRoot.h AtkRoot.c
+demo_root.o: demo_root.h demo_root.c
 	gcc $(CFLAGS) -c AtkRoot.c $(LIBS) -Wall -g3 -O0 -ggdb3
 	
-AtkFrame.o: AtkFrame.h AtkFrame.c
+demo_frame.o: demo_frame.h demo_frame.c
 	gcc $(CFLAGS) -c AtkFrame.c $(LIBS) -Wall -g3 -O0 -ggdb3	
 	
 clean:

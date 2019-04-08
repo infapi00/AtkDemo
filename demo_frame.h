@@ -5,8 +5,8 @@
  *      Author: giuseppe
  */
 
-#ifndef ATKFRAME_H_
-#define ATKFRAME_H_
+#ifndef DEMO_FRAME_H_
+#define DEMO_FRAME_H_
 
 #include <atk/atk.h>
 #include "fixAtk.h"
@@ -27,4 +27,4 @@ CAtkFrame *c_atk_frame_new (void);
 
 G_END_DECLS
 
-#endif /* ATKFRAME_H_ */
+#endif /* DEMO_FRAME_H_ */

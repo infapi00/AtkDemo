@@ -9,8 +9,8 @@
 #include <atk/atk.h>
 #include <atk-bridge.h>
 
-#include "AtkRoot.h"
-#include "AtkFrame.h"
+#include "demo_frame.h"
+#include "demo_root.h"
 
 static CAtkRoot * root = NULL;
 static CAtkFrame * frame = NULL;
