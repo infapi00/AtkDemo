@@ -25,6 +25,10 @@ struct _CAtkFrameClass
 
 CAtkFrame *c_atk_frame_new (void);
 
+void c_atk_frame_add_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
+
+void c_atk_frame_remove_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
+
 G_END_DECLS
 
 #endif /* DEMO_FRAME_H_ */

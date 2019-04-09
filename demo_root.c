@@ -13,19 +13,15 @@
 
 typedef struct
 {
-	GList * accessibleObjects;
-
-	guint obj_added_id;
-	guint obj_removed_id;
+	GList *accessibleObjects;
 
 } CAtkRootPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
-static void
-c_atk_add_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+void c_atk_root_add_child(CAtkRoot *root, AtkObject *obj, gpointer data)
 {
-	CAtkRoot *root = C_ATK_ROOT(data);
+	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
 	gint index = -1;
 
 	atk_object_set_parent (obj, ATK_OBJECT (root));
@@ -33,14 +29,13 @@ c_atk_add_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
 	priv->accessibleObjects = g_list_append (priv->accessibleObjects, obj);
 
 	index = g_list_index (priv->accessibleObjects, obj);
-	g_signal_emit_by_name (root, "children_changed::add", index, obj, NULL);
+	g_signal_emit_by_name (root, "children-changed::add", index, obj, NULL);
 
 }
 
-static void
-c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
+void c_atk_root_remove_child(CAtkRoot *root, AtkObject *obj, gpointer data)
 {
-	CAtkRoot *root = C_ATK_ROOT(data);
+	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
 	gint index = -1;
 
 	atk_object_set_parent (obj, ATK_OBJECT (root));
@@ -49,7 +44,7 @@ c_atk_remove_obj(CAtkRootPrivate *priv, AtkObject *obj, gpointer data)
 
 	index = g_list_index (priv->accessibleObjects, obj);
 
-	g_signal_emit_by_name (root, "children_changed::remove", index, obj, NULL);
+	g_signal_emit_by_name (root, "children-changed::remove", index, obj, NULL);
 }
 
 /**
@@ -72,31 +67,9 @@ c_atk_root_new (void)
 static void
 c_atk_root_initialize (AtkObject *self, gpointer null)
 {
-	const GList *iter = NULL;
-	const GList *obj_list = NULL;
-	AtkObject *child = NULL;
-	CAtkRoot * root= NULL;
 
 	atk_object_set_role(self, ATK_ROLE_APPLICATION);
 	atk_object_set_parent(self, NULL);
-
-	root = C_ATK_ROOT(self);
-	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
-	obj_list = priv->accessibleObjects;
-
-	for (iter = obj_list; iter != NULL; iter = g_list_next (iter))
-	    {
-	      child = ATK_OBJECT(iter->data);
-
-	      atk_object_set_parent (child, ATK_OBJECT (root));
-
-	      priv->accessibleObjects = g_list_append (priv->accessibleObjects, child);
-
-	    }
-
-	  priv->obj_added_id = g_signal_connect (G_OBJECT (priv), "obj-added", G_CALLBACK (c_atk_add_obj), root);
-
-	  priv->obj_removed_id = g_signal_connect (G_OBJECT (priv), "obj-removed", G_CALLBACK (c_atk_remove_obj), root);
 
 }
 
@@ -108,8 +81,7 @@ c_atk_root_get_n_children (AtkObject *obj)
 }
 
 static AtkObject*
-c_atk_root_ref_child (AtkObject *obj,
-                     gint i)
+c_atk_root_ref_child (AtkObject *obj, gint i)
 {
   CAtkRoot *root = NULL;
   GList *obj_list = NULL;
@@ -156,7 +128,7 @@ c_atk_root_finalize (GObject *object)
 static const char*
 c_atk_root_get_name (AtkObject *obj)
 {
-   return "ATK DEMO FOR THE WIN!!";
+   return "ATK ROOT";
 }
 
 static void
@@ -169,7 +141,7 @@ c_atk_root_class_init (CAtkRootClass *klass)
   atk_class->get_name = c_atk_root_get_name;
   atk_class->get_n_children = c_atk_root_get_n_children;
   atk_class->ref_child = c_atk_root_ref_child;
-  //add methods
+
   object_class->finalize = c_atk_root_finalize;
 }
 
@@ -178,6 +150,4 @@ c_atk_root_init (CAtkRoot *self)
 {
 	CAtkRootPrivate *priv = c_atk_root_get_instance_private(self);
 	priv->accessibleObjects = NULL;
-	priv->obj_added_id = 0;
-	priv->obj_added_id = 0;
 }

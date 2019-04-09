@@ -12,9 +12,9 @@
 #include "demo_frame.h"
 #include "demo_root.h"
 
-static CAtkRoot * root = NULL;
-static CAtkFrame * frame = NULL;
-static GMainLoop * mainloop;
+static CAtkRoot *root = NULL;
+static CAtkFrame *frame = NULL;
+static GMainLoop *mainloop;
 
 static AtkObject *
 get_root (void)
@@ -47,7 +47,7 @@ add_atk_frame(void){
 	if (!root && frame)
 	{
 		frame = c_atk_frame_new ();
-
+		c_atk_root_add_child(root, ATK_OBJECT(frame), NULL);
 	}
 }
 

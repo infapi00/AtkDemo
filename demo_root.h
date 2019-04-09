@@ -24,6 +24,10 @@ struct _CAtkRootClass
 
 CAtkRoot *c_atk_root_new (void);
 
+void c_atk_root_add_child(CAtkRoot *root, AtkObject *obj, gpointer data);
+
+void c_atk_root_remove_child(CAtkRoot *root, AtkObject *obj, gpointer data);
+
 G_END_DECLS
 
 #endif /* ATKROOT_H_ */
