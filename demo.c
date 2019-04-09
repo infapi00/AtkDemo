@@ -44,7 +44,7 @@ setup_atk_util (void)
 
 static void
 add_atk_window(void){
-	if (!root && window)
+	if (root && !window)
 	{
 		window = c_atk_window_new();
 		c_atk_root_add_child(root, ATK_OBJECT(window), NULL);
