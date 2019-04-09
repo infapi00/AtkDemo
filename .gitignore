@@ -3,5 +3,5 @@ demo
 .project
 .settings/
 demo_root.o
-demo_frame.o
+demo_window.o
 demo.a
