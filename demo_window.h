@@ -1,5 +1,5 @@
 /*
- * AtkFrame.h
+ * AtkWindow.h
  *
  *  Created on: Apr 4, 2019
  *      Author: giuseppe

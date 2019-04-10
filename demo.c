@@ -10,9 +10,11 @@
 #include <atk-bridge.h>
 
 #include "demo_root.h"
+#include "demo_frame.h"
 #include "demo_window.h"
 
 static CAtkRoot *root = NULL;
+static CAtkFrame *frame = NULL;
 static CAtkWindow *window = NULL;
 static GMainLoop *mainloop;
 
@@ -43,11 +45,20 @@ setup_atk_util (void)
 }
 
 static void
+add_atk_frame(void){
+	if (root && !frame)
+	{
+		frame = c_atk_frame_new();
+		c_atk_root_add_child(root, ATK_OBJECT(frame), NULL);
+	}
+}
+
+static void
 add_atk_window(void){
-	if (!root && window)
+	if (frame && !window)
 	{
 		window = c_atk_window_new();
-		c_atk_root_add_child(root, ATK_OBJECT(window), NULL);
+		c_atk_frame_add_child(frame, ATK_OBJECT(window), NULL);
 	}
 }
 
@@ -60,6 +71,7 @@ int main(int argc, char **argv) {
 
 	if(init_outcome == 0){
 		printf ("Initialized\n");
+		add_atk_frame();
 		add_atk_window();
 	}
 	else
