@@ -14,6 +14,7 @@
 typedef struct
 {
 	GList *accessibleObjects;
+	AtkStateSet *states;
 
 } CAtkFramePrivate;
 
@@ -48,6 +49,15 @@ void c_atk_frame_remove_child(CAtkFrame *frame, AtkObject *obj, gpointer data)
 	g_signal_emit_by_name (frame, "children-changed::remove", index, obj, NULL);
 }
 
+void c_atk_frame_change_state(CAtkFrame *frame, const gchar *name, gboolean value, gpointer data)
+{
+	CAtkFramePrivate *priv = c_atk_frame_get_instance_private(frame);
+	AtkStateType state = atk_state_type_for_name(name);
+
+	if (atk_state_set_contains_state (priv->states, state))
+		g_signal_emit_by_name (frame, "state-change" , name, value, data);
+}
+
 CAtkFrame *
 c_atk_frame_new (void)
 {
@@ -69,7 +79,25 @@ static void
 c_atk_frame_initialize (AtkObject *self, gpointer null)
 {
 	atk_object_set_role(self,ATK_ROLE_FRAME);
+	CAtkFramePrivate *priv = c_atk_frame_get_instance_private(C_ATK_FRAME(self));
+
+	atk_state_set_add_state(priv->states,ATK_STATE_ENABLED);
+	atk_state_set_add_state(priv->states,ATK_STATE_FOCUSABLE);
+	atk_state_set_add_state(priv->states,ATK_STATE_VISIBLE);
+	atk_state_set_add_state(priv->states,ATK_STATE_SHOWING);
+	atk_state_set_add_state(priv->states,ATK_STATE_RESIZABLE);
+
+	const gchar *name = atk_state_type_get_name (ATK_STATE_VISIBLE);
+	c_atk_frame_change_state(C_ATK_FRAME(self), name, FALSE, NULL);
+
 	atk_object_set_parent(self,NULL);
+}
+
+static AtkStateSet*
+c_atk_frame_ref_state_set(AtkObject *obj)
+{
+	 CAtkFramePrivate *priv = c_atk_frame_get_instance_private(C_ATK_FRAME(obj));
+	 return priv->states;
 }
 
 static gint
@@ -120,6 +148,12 @@ c_atk_frame_finalize (GObject *object)
 	  priv->accessibleObjects = NULL;
 	}
 
+	if (priv->states)
+	{
+		atk_state_set_clear_states(priv->states);
+		priv->states = NULL;
+	}
+
 	G_OBJECT_CLASS (c_atk_frame_parent_class)->finalize (object);
 }
 
@@ -134,6 +168,7 @@ c_atk_frame_class_init (CAtkFrameClass *klass)
   atk_class->get_n_children = c_atk_frame_get_n_children;
   atk_class->ref_child = c_atk_frame_ref_child;
   atk_class->get_name = c_atk_frame_get_name;
+  atk_class->ref_state_set=c_atk_frame_ref_state_set;
 
   object_class->finalize = c_atk_frame_finalize;
 }
@@ -143,5 +178,6 @@ c_atk_frame_init (CAtkFrame *self)
 {
 	CAtkFramePrivate *priv = c_atk_frame_get_instance_private(self);
 	priv->accessibleObjects = NULL;
+	priv->states = atk_state_set_new();
 }
 
