@@ -58,6 +58,13 @@ c_atk_frame_new (void)
    return frame;
 }
 
+static const char*
+c_atk_frame_get_name (AtkObject *obj)
+{
+   return "ATK FRAME";
+}
+
+
 static void
 c_atk_frame_initialize (AtkObject *self, gpointer null)
 {
@@ -126,6 +133,7 @@ c_atk_frame_class_init (CAtkFrameClass *klass)
   atk_class->initialize = c_atk_frame_initialize;
   atk_class->get_n_children = c_atk_frame_get_n_children;
   atk_class->ref_child = c_atk_frame_ref_child;
+  atk_class->get_name = c_atk_frame_get_name;
 
   object_class->finalize = c_atk_frame_finalize;
 }

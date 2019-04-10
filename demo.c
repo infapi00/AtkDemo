@@ -8,10 +8,7 @@
 #include <stdlib.h>
 #include <atk/atk.h>
 #include <atk-bridge.h>
-
-#include "demo_root.h"
-#include "demo_frame.h"
-#include "demo_window.h"
+#include "myAtk.h"
 
 static CAtkRoot *root = NULL;
 static CAtkFrame *frame = NULL;
@@ -81,6 +78,10 @@ int main(int argc, char **argv) {
 	g_main_loop_run (mainloop);
 
 	atk_bridge_adaptor_cleanup();
+	g_object_unref(window);
+	g_object_unref(frame);
+	g_object_unref(root);
+
 	return 0;
 
 }
