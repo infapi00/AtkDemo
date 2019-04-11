@@ -100,7 +100,7 @@ static void
 c_atk_frame_initialize (AtkObject *self, gpointer null)
 {
 	AtkAttribute *demo = g_new0(AtkAttribute,1);
-	demo->name = "toolkit";
+	demo->name = "name";
 	demo->value = "demo";
 
 	atk_object_set_role(self,ATK_ROLE_FRAME);
@@ -158,8 +158,6 @@ c_atk_frame_get_attributes(AtkObject *obj)
 	atr_list = priv->attributes;
 
 	num = g_slist_length (atr_list);
-
-	printf("%ls",&num);
 
 	if (!num)
 	  return NULL;
