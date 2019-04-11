@@ -34,6 +34,10 @@ void c_atk_frame_add_state (CAtkFrame *frame, AtkStateType state);
 
 void c_atk_frame_remove_state (CAtkFrame *frame, AtkStateType state);
 
+void c_atk_frame_add_attribute (CAtkFrame *frame, AtkAttribute *attribute);
+
+void c_atk_frame_remove_attribute (CAtkFrame *frame, AtkAttribute *attribute);
+
 G_END_DECLS
 
 #endif /* DEMO_FRAME_H_ */

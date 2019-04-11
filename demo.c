@@ -47,6 +47,12 @@ add_atk_frame(void){
 	{
 		frame = c_atk_frame_new();
 		c_atk_root_add_child(root, ATK_OBJECT(frame));
+		//interrogation of java object
+		c_atk_frame_add_state(frame, ATK_STATE_ENABLED);
+		c_atk_frame_add_state(frame, ATK_STATE_FOCUSABLE);
+		c_atk_frame_add_state(frame, ATK_STATE_VISIBLE);
+		c_atk_frame_add_state(frame, ATK_STATE_SHOWING);
+		c_atk_frame_add_state(frame, ATK_STATE_RESIZABLE);
 	}
 }
 
