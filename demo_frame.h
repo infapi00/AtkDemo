@@ -26,11 +26,13 @@ struct _CAtkFrameClass
 
 CAtkFrame *c_atk_frame_new (void);
 
-void c_atk_frame_add_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
+void c_atk_frame_add_child (CAtkFrame *frame, AtkObject *obj);
 
-void c_atk_frame_remove_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
+void c_atk_frame_remove_child (CAtkFrame *frame, AtkObject *obj);
 
-void c_atk_frame_set_state(CAtkFrame *frame, AtkStateType state, gboolean value, gpointer data);
+void c_atk_frame_add_state (CAtkFrame *frame, AtkStateType state);
+
+void c_atk_frame_remove_state (CAtkFrame *frame, AtkStateType state);
 
 G_END_DECLS
 

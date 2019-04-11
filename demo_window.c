@@ -19,7 +19,7 @@ typedef struct
 
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkWindow, c_atk_window, ATK_TYPE_OBJECT)
 
-void c_atk_window_add_child(CAtkWindow *window, AtkObject *obj, gpointer data)
+void c_atk_window_add_child(CAtkWindow *window, AtkObject *obj)
 {
 	CAtkWindowPrivate *priv = c_atk_window_get_instance_private(window);
 	gint index = -1;
@@ -33,7 +33,7 @@ void c_atk_window_add_child(CAtkWindow *window, AtkObject *obj, gpointer data)
 
 }
 
-void c_atk_window_remove_child(CAtkWindow *window, AtkObject *obj, gpointer data)
+void c_atk_window_remove_child(CAtkWindow *window, AtkObject *obj)
 {
 	CAtkWindowPrivate *priv = c_atk_window_get_instance_private(window);
 	gint index = -1;

@@ -46,7 +46,7 @@ add_atk_frame(void){
 	if (root && !frame)
 	{
 		frame = c_atk_frame_new();
-		c_atk_root_add_child(root, ATK_OBJECT(frame), NULL);
+		c_atk_root_add_child(root, ATK_OBJECT(frame));
 	}
 }
 
@@ -55,7 +55,7 @@ add_atk_window(void){
 	if (frame && !window)
 	{
 		window = c_atk_window_new();
-		c_atk_frame_add_child(frame, ATK_OBJECT(window), NULL);
+		c_atk_frame_add_child(frame, ATK_OBJECT(window));
 	}
 }
 

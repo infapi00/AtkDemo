@@ -19,7 +19,7 @@ typedef struct
 
 G_DEFINE_TYPE_WITH_PRIVATE (CAtkRoot, c_atk_root, ATK_TYPE_OBJECT)
 
-void c_atk_root_add_child(CAtkRoot *root, AtkObject *obj, gpointer data)
+void c_atk_root_add_child(CAtkRoot *root, AtkObject *obj)
 {
 	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
 	gint index = -1;
@@ -33,7 +33,7 @@ void c_atk_root_add_child(CAtkRoot *root, AtkObject *obj, gpointer data)
 
 }
 
-void c_atk_root_remove_child(CAtkRoot *root, AtkObject *obj, gpointer data)
+void c_atk_root_remove_child(CAtkRoot *root, AtkObject *obj)
 {
 	CAtkRootPrivate *priv = c_atk_root_get_instance_private(root);
 	gint index = -1;
