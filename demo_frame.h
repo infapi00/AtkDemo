@@ -30,7 +30,7 @@ void c_atk_frame_add_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
 
 void c_atk_frame_remove_child(CAtkFrame *frame, AtkObject *obj, gpointer data);
 
-void c_atk_frame_change_state(CAtkFrame *frame, const gchar *state, gboolean value, gpointer data);
+void c_atk_frame_set_state(CAtkFrame *frame, AtkStateType state, gboolean value, gpointer data);
 
 G_END_DECLS
 

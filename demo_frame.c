@@ -4,7 +4,7 @@
  *  Created on: Apr 10, 2019
  *      Author: giuseppe
  */
-
+#include <stdio.h>
 
 #include <gmodule.h>
 #include "demo_frame.h"
@@ -49,14 +49,13 @@ void c_atk_frame_remove_child(CAtkFrame *frame, AtkObject *obj, gpointer data)
 	g_signal_emit_by_name (frame, "children-changed::remove", index, obj, NULL);
 }
 
-void c_atk_frame_change_state(CAtkFrame *frame, const gchar *name, gboolean value, gpointer data)
-{
-	CAtkFramePrivate *priv = c_atk_frame_get_instance_private(frame);
-	AtkStateType state = atk_state_type_for_name(name);
+void c_atk_frame_set_state(CAtkFrame *frame, AtkStateType state, gboolean value, gpointer data){
 
-	if (atk_state_set_contains_state (priv->states, state))
-		g_signal_emit_by_name (frame, "state-change" , name, value, data);
+	CAtkFramePrivate *priv = c_atk_frame_get_instance_private (frame);
+	if ( atk_state_set_contains_state(priv->states, state) )
+		atk_object_notify_state_change( ATK_OBJECT(frame), state, value);
 }
+
 
 CAtkFrame *
 c_atk_frame_new (void)
@@ -87,8 +86,7 @@ c_atk_frame_initialize (AtkObject *self, gpointer null)
 	atk_state_set_add_state(priv->states,ATK_STATE_SHOWING);
 	atk_state_set_add_state(priv->states,ATK_STATE_RESIZABLE);
 
-	const gchar *name = atk_state_type_get_name (ATK_STATE_VISIBLE);
-	c_atk_frame_change_state(C_ATK_FRAME(self), name, FALSE, NULL);
+	c_atk_frame_set_state(C_ATK_FRAME(self), ATK_STATE_VISIBLE, FALSE, NULL);
 
 	atk_object_set_parent(self,NULL);
 }
@@ -96,8 +94,8 @@ c_atk_frame_initialize (AtkObject *self, gpointer null)
 static AtkStateSet*
 c_atk_frame_ref_state_set(AtkObject *obj)
 {
-	 CAtkFramePrivate *priv = c_atk_frame_get_instance_private(C_ATK_FRAME(obj));
-	 return priv->states;
+	CAtkFramePrivate *priv = c_atk_frame_get_instance_private(C_ATK_FRAME(obj));
+	return priv->states;
 }
 
 static gint
