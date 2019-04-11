@@ -86,7 +86,13 @@ c_atk_frame_new (void)
 static const char*
 c_atk_frame_get_name (AtkObject *obj)
 {
-   return "ATK FRAME";
+   return "Atk Frame";
+}
+
+static const char*
+c_atk_frame_get_description()
+{
+	return "this is the description of the frame component";
 }
 
 
@@ -153,6 +159,8 @@ c_atk_frame_get_attributes(AtkObject *obj)
 
 	num = g_slist_length (atr_list);
 
+	printf("%ls",&num);
+
 	if (!num)
 	  return NULL;
 
@@ -212,6 +220,7 @@ c_atk_frame_class_init (CAtkFrameClass *klass)
   atk_class->get_n_children = c_atk_frame_get_n_children;
   atk_class->ref_child = c_atk_frame_ref_child;
   atk_class->get_name = c_atk_frame_get_name;
+  atk_class->get_description = c_atk_frame_get_description;
   atk_class->ref_state_set = c_atk_frame_ref_state_set;
   atk_class->get_attributes = c_atk_frame_get_attributes;
 
