@@ -38,7 +38,7 @@ setup_atk_util (void)
   klass = g_type_class_ref (ATK_TYPE_UTIL);
   klass->get_root = get_root;
   klass->get_toolkit_name = get_toolkit_name;
-  //g_type_class_unref (klass);
+  g_type_class_unref (klass);
 }
 
 static void
