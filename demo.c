@@ -12,6 +12,7 @@
 
 static CAtkRoot *root = NULL;
 static CAtkFrame *frame = NULL;
+static CAtkRootPane *root_pane = NULL;
 static CAtkWindow *window = NULL;
 static GMainLoop *mainloop;
 
@@ -57,11 +58,20 @@ add_atk_frame(void){
 }
 
 static void
+add_atk_root_pane(void){
+	if (frame && !root_pane)
+	{
+		root_pane = c_atk_root_pane_new();
+		c_atk_frame_add_child(frame, ATK_OBJECT(root_pane));
+	}
+}
+
+static void
 add_atk_window(void){
-	if (frame && !window)
+	if (root_pane && !window)
 	{
 		window = c_atk_window_new();
-		c_atk_frame_add_child(frame, ATK_OBJECT(window));
+		c_atk_root_pane_add_child(root_pane, ATK_OBJECT(window));
 	}
 }
 
@@ -75,6 +85,7 @@ int main(int argc, char **argv) {
 	if(init_outcome == 0){
 		printf ("Initialized\n");
 		add_atk_frame();
+		add_atk_root_pane();
 		add_atk_window();
 	}
 	else

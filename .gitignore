@@ -1,8 +1,10 @@
 demo
 .cproject
+.vscode
 .project
 .settings/
 demo_root.o
+demo_root_pane.o
 demo_frame.o
 demo_window.o
 demo.a
