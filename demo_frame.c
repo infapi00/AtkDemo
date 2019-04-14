@@ -97,14 +97,9 @@ c_atk_frame_get_description()
 
 
 static void
-c_atk_frame_initialize (AtkObject *self, gpointer null)
+c_atk_frame_initialize (AtkObject *self)
 {
-	AtkAttribute *demo = g_new0(AtkAttribute,1);
-	demo->name = "name";
-	demo->value = "demo";
-
 	atk_object_set_role(self,ATK_ROLE_FRAME);
-	c_atk_frame_add_attribute(C_ATK_FRAME(self), demo);
 
 	atk_object_set_parent(self,NULL);
 }

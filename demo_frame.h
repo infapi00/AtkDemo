@@ -8,7 +8,6 @@
 #ifndef DEMO_FRAME_H_
 #define DEMO_FRAME_H_
 
-
 #include <atk/atk.h>
 #include "fixAtk.h"
 

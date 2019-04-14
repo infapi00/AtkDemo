@@ -13,5 +13,4 @@
 #include "demo_frame.h"
 #include "demo_window.h"
 
-
 #endif /* MYATK_H_ */

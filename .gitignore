@@ -4,6 +4,7 @@ demo
 .project
 .settings/
 demo_root.o
+demo_actor.o
 demo_root_pane.o
 demo_frame.o
 demo_window.o

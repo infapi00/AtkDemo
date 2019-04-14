@@ -54,6 +54,11 @@ add_atk_frame(void){
 		c_atk_frame_add_state(frame, ATK_STATE_VISIBLE);
 		c_atk_frame_add_state(frame, ATK_STATE_SHOWING);
 		c_atk_frame_add_state(frame, ATK_STATE_RESIZABLE);
+
+		AtkAttribute *demo = g_new0(AtkAttribute,1);
+		demo->name = "name";
+		demo->value = "demo";
+		c_atk_frame_add_attribute(frame, demo);
 	}
 }
 
