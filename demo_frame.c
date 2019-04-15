@@ -97,7 +97,7 @@ c_atk_frame_get_description()
 
 
 static void
-c_atk_frame_initialize (AtkObject *self)
+c_atk_frame_initialize (AtkObject *self, gpointer null)
 {
 	atk_object_set_role(self,ATK_ROLE_FRAME);
 
