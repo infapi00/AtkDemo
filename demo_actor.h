@@ -15,7 +15,7 @@ G_BEGIN_DECLS
 
 #define C_TYPE_ATK_ACTOR            (c_atk_actor_get_type ())
 
-G_DEFINE_ABSTRACT_TYPE(CAtkActor, c_atk_actor, AtkObject)
+G_DECLARE_DERIVABLE_TYPE(CAtkActor, c_atk_actor, C, ATK_ACTOR, AtkObject)
 
 struct _CAtkActorClass
 {

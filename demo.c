@@ -10,9 +10,9 @@
 #include <atk-bridge.h>
 #include "myAtk.h"
 
-static CAtkRoot *root = NULL;
-static CAtkFrame *frame = NULL;
-static CAtkRootPane *root_pane = NULL;
+static CAtkActor *root = NULL;
+static CAtkActor *frame = NULL;
+static CAtkActor *root_pane = NULL;
 static CAtkWindow *window = NULL;
 static GMainLoop *mainloop;
 
@@ -20,7 +20,7 @@ static AtkObject *
 get_root (void)
 {
 	if (!root)
-		root = c_atk_root_new ();
+		root = C_ATK_ACTOR(c_atk_root_new ());
 
 	return ATK_OBJECT(root);
 }
@@ -46,19 +46,19 @@ static void
 add_atk_frame(void){
 	if (root && !frame)
 	{
-		frame = c_atk_frame_new();
-		c_atk_root_add_child(root, ATK_OBJECT(frame));
+		frame = C_ATK_ACTOR(c_atk_frame_new());
+		c_atk_actor_add_child(root, ATK_OBJECT(frame));
 		//interrogation of java object
-		c_atk_frame_add_state(frame, ATK_STATE_ENABLED);
-		c_atk_frame_add_state(frame, ATK_STATE_FOCUSABLE);
-		c_atk_frame_add_state(frame, ATK_STATE_VISIBLE);
-		c_atk_frame_add_state(frame, ATK_STATE_SHOWING);
-		c_atk_frame_add_state(frame, ATK_STATE_RESIZABLE);
+		c_atk_actor_add_state(frame, ATK_STATE_ENABLED);
+		c_atk_actor_add_state(frame, ATK_STATE_FOCUSABLE);
+		c_atk_actor_add_state(frame, ATK_STATE_VISIBLE);
+		c_atk_actor_add_state(frame, ATK_STATE_SHOWING);
+		c_atk_actor_add_state(frame, ATK_STATE_RESIZABLE);
 
 		AtkAttribute *demo = g_new0(AtkAttribute,1);
 		demo->name = "name";
 		demo->value = "demo";
-		c_atk_frame_add_attribute(frame, demo);
+		c_atk_actor_add_attribute(frame, demo);
 	}
 }
 
@@ -66,8 +66,8 @@ static void
 add_atk_root_pane(void){
 	if (frame && !root_pane)
 	{
-		root_pane = c_atk_root_pane_new();
-		c_atk_frame_add_child(frame, ATK_OBJECT(root_pane));
+		root_pane = C_ATK_ACTOR(c_atk_root_pane_new());
+		c_atk_actor_add_child(frame, ATK_OBJECT(root_pane));
 	}
 }
 
@@ -76,7 +76,7 @@ add_atk_window(void){
 	if (root_pane && !window)
 	{
 		window = c_atk_window_new();
-		c_atk_root_pane_add_child(root_pane, ATK_OBJECT(window));
+		c_atk_actor_add_child(root_pane, ATK_OBJECT(window));
 	}
 }
 

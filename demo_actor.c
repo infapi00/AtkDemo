@@ -20,7 +20,7 @@ typedef struct
 } CAtkActorPrivate;
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (CAtkActor, c_atk_actor, ATK_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CAtkActor, c_atk_actor, ATK_TYPE_OBJECT)
 
 void
 c_atk_actor_add_child(CAtkActor *actor, AtkObject *obj)
@@ -72,15 +72,15 @@ void c_atk_actor_remove_state(CAtkActor *actor, AtkStateType state){
 	atk_object_notify_state_change( ATK_OBJECT(actor), state, FALSE);
 }
 
-
+/*
 static void
-c_atk_actor_initialize (AtkObject *self)
+c_atk_actor_initialize (AtkObject *self, gpointer null)
 {
-    atk_object_initialize(self)
+	atk_object_initialize(self, NULL);
 
-	atk_object_set_parent(self,NULL);
+	atk_object_set_parent(self, NULL);
 }
-
+*/
 static AtkStateSet*
 c_atk_actor_ref_state_set(AtkObject *obj)
 {
@@ -186,11 +186,9 @@ c_atk_actor_class_init (CAtkActorClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *atk_class = ATK_OBJECT_CLASS (klass);
 
-  atk_class->initialize = c_atk_actor_initialize;
+  //atk_class->initialize = c_atk_actor_initialize;
   atk_class->get_n_children = c_atk_actor_get_n_children;
   atk_class->ref_child = c_atk_actor_ref_child;
-  atk_class->get_name = c_atk_actor_get_name;
-  atk_class->get_description = c_atk_actor_get_description;
   atk_class->ref_state_set = c_atk_actor_ref_state_set;
   atk_class->get_attributes = c_atk_actor_get_attributes;
 
