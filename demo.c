@@ -55,6 +55,12 @@ add_atk_frame(void){
 		c_atk_actor_add_state(frame, ATK_STATE_SHOWING);
 		c_atk_actor_add_state(frame, ATK_STATE_RESIZABLE);
 
+                /* This is a really bad place to add the
+                 * attribute. Attributes are inherent to the object
+                 * itself, you shouldn't be adding them
+                 * externally. Each class should be able to return the
+                 * AttributeSet by themselves.
+                */
 		AtkAttribute *demo = g_new0(AtkAttribute,1);
 		demo->name = "name";
 		demo->value = "demo";
